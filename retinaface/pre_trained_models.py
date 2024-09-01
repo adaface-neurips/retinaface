@@ -10,9 +10,12 @@ models = {
     "resnet50_2020-07-20": model(
         url="https://github.com/ternaus/retinaface/releases/download/0.01/retinaface_resnet50_2020-07-20-f168fae3c.zip",  # noqa: E501 pylint: disable=C0301
         model=Model,
+    ),
+    "biubug6": model(
+        url="https://github.com/adaface-neurips/retinaface/raw/master/models/Resnet50_Final.zip?raw=true",
+        model=Model,
     )
 }
-
 
 def get_model(model_name: str, max_size: int, device: str = "cpu") -> Model:
     model = models[model_name].model(max_size=max_size, device=device)
