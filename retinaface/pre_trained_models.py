@@ -19,7 +19,8 @@ models = {
 
 def get_model(model_name: str, max_size: int, device: str = "cpu") -> Model:
     model = models[model_name].model(max_size=max_size, device=device)
-    state_dict = model_zoo.load_url(models[model_name].url, progress=True, map_location="cpu")
+    state_dict = model_zoo.load_url(models[model_name].url, file_name = model_name + ".pth",
+                                    progress=True, map_location="cpu")
     for key in list(state_dict.keys()):
         if key.startswith("module."):
             state_dict[key[7:]] = state_dict.pop(key)
